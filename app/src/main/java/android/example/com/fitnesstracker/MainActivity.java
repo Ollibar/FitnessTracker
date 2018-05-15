@@ -1,5 +1,6 @@
 package android.example.com.fitnesstracker;
 //hallo
+// auch Hallo
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
