@@ -1,10 +1,12 @@
 package android.example.com.fitnesstracker.Datenbank;
 
 public class ModelSatz {
-	int satz_Wiederholung;
-	int satz_id;
-	int satz_Nummer;
-	double satz_Gewicht;
+
+
+	private int satz_Wiederholung;
+	private int satz_id;
+	private int satz_Nummer;
+	private double satz_Gewicht;
 
 	public ModelSatz(int satz_Wiederholung,int satz_id,int satz_Nummer,double satz_Gewicht) {
 		this.satz_Wiederholung = satz_Wiederholung;

@@ -4,26 +4,28 @@ import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 @SuppressWarnings("SyntaxError")
 class FitnessDbHelper extends SQLiteOpenHelper{
 
+    public static final String LOG =FitnessDbHelper.class.getSimpleName();
     private static final String DB_NAME="fitness.db";
     private static final int DB_Version = 1;
 
     // Strings für die Tabelle der Stationen
 
-    private static final String STAT_TBL_NAME ="Station";
-    private static final String STAT_ID ="stat_ID";
-    private static final String STAT_Typ ="stat_Typ";
-    private static final String STAT_SOLL_GESCHW ="stat_Soll_Geschw";
-    private static final String STAT_SOLL_DAUER ="stat_Soll_Dauer";
-    private static final String STAT_POS1 ="stat_Pos1";
-    private static final String STAT_POS2 ="stat_Pos2";
-    private static final String STAT_POS3 ="stat_Pos3";
-    private static final String STAT_SOLL_GEWICHT ="stat_Soll_Gewicht";
+    private static final String STAT_TBL_NAME =" Station ";
+    private static final String STAT_ID =" stat_ID";
+    private static final String STAT_Typ =" stat_Typ";
+    private static final String STAT_SOLL_GESCHW =" stat_Soll_Geschw";
+    private static final String STAT_SOLL_DAUER =" stat_Soll_Dauer";
+    private static final String STAT_POS1 =" stat_Pos1";
+    private static final String STAT_POS2 =" stat_Pos2";
+    private static final String STAT_POS3 =" stat_Pos3";
+    private static final String STAT_SOLL_GEWICHT =" stat_Soll_Gewicht";
 
-    private static final String STAT_SQL_CREATE =
+    public static final String STAT_SQL_CREATE =
             "CREATE TABLE" + STAT_TBL_NAME + "(" +
                     STAT_ID + "integer primary key autoincrement, "+
                     STAT_Typ + "text not null, " +
@@ -36,7 +38,7 @@ class FitnessDbHelper extends SQLiteOpenHelper{
 
     // Strings für die Tabelle der Trainings
 
-    private static final String TRAIN_TBL_NAME = "Training";
+    private static final String TRAIN_TBL_NAME = " Training";
     private static final String TRAIN_ID = "train_ID";
     private static final String TRAIN_DATUM = "train_Datum";
     private static final String TRAIN_KOMMENTAR = "train_Kommentar";
@@ -50,7 +52,7 @@ class FitnessDbHelper extends SQLiteOpenHelper{
 
     // Strings für die Tabelle der Übungen
 
-    private static final String UEBUNG_TBL_NAME = "Uebung";
+    private static final String UEBUNG_TBL_NAME =  "Uebung";
     private static final String UEBUNG_ID = "ueb_ID";
     private static final String UEBUNG_STATION = "ueb_Station"; // Fremdschlüssel
     private static final String UEBUNG_DAUER = "ueb_Dauer";
@@ -67,7 +69,7 @@ class FitnessDbHelper extends SQLiteOpenHelper{
 
     // Strings für die Tabelle Satz
 
-    private static final String SATZ_TBL_NAME = "Satz";
+    private static final String SATZ_TBL_NAME = " Satz";
     private static final String SATZ_ID="satz_ID";
     private static final String SATZ_UEBUNG="satz_UEBUNG"; //Fremdschlüssel
     private static final String SATZ_Nummer="satz_Nummer"; // Umbennen?!
@@ -78,9 +80,9 @@ class FitnessDbHelper extends SQLiteOpenHelper{
             "create table"+ SATZ_TBL_NAME + " ( " +
                     SATZ_ID + "integer primary key autoincrement," +
                     SATZ_UEBUNG + "integer ,FOREIGN KEY(" + SATZ_UEBUNG + ") REFERENCES " + UEBUNG_TBL_NAME + "(" + UEBUNG_ID + ")," +
-                    SATZ_Nummer + "text," +
-                    SATZ_GEWICHT + "text," +
-                    SATZ_WIEDERHOLUNG +"integer;";
+                    SATZ_Nummer + " text," +
+                    SATZ_GEWICHT + " text," +
+                    SATZ_WIEDERHOLUNG +" integer;";
 
 
 
@@ -88,14 +90,19 @@ class FitnessDbHelper extends SQLiteOpenHelper{
 
     public FitnessDbHelper(Context context) {
         super(context, DB_NAME, null, DB_Version);
+        Log.d(LOG,"DbHelper hat die Datenbank: "+getDatabaseName()+" erzeugt.")
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         try{
+            Log.d(LOG,"Die Tabelle wird mit SQL-Befehl: "+STAT_SQL_CREATE+" angelegt.");
             db.execSQL(STAT_SQL_CREATE);
+            Log.d(LOG,"Die Tabelle wird mit SQL-Befehl: "+TRAIN_SQL_CREATE+" angelegt.");
             db.execSQL(TRAIN_SQL_CREATE);
+            Log.d(LOG,"Die Tabelle wird mit SQL-Befehl: "+UEBUNG_SQL_CREATE+" angelegt.");
             db.execSQL(UEBUNG_SQL_CREATE);
+            Log.d(LOG,"Die Tablle wird mit SQL-Befehl: "+SATZ_SQL_CREATE+" erzeugt.");
             db.execSQL(SATZ_SQL_CREATE);
         }catch (SQLException e){
             e.printStackTrace();

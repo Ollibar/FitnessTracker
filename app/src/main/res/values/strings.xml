@@ -1,3 +1,13 @@
 <resources>
+    //Main
     <string name="app_name">FitnessTracker</string>
+    <string name="training_starten">Training Starten</string>
+    <string name="gerät_bearbeiten">Gerät Bearbeiten</string>
+    <string name="auswertung_der_trainings_einheiten">Auswertung</string>
+    <string name="projekt_team">/@Hung,Benni,Haido</string>
+
+    //Menu
+    <string name="menu_item">später</string>
+    <string name="trainings_ziel">Trainingsziele erstellen</string>
+
 </resources>

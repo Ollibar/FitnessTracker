@@ -13,9 +13,14 @@ import java.util.List;
 import java.util.Locale;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-	private static final String LOG = DatabaseHelper.class.getName();
+
+	private static final String LOG_TAG = DatabaseHelper.class.getName();
 	private static final int DATABASE_VERSION = 1;
 	private static final String DATABASE_NAME = "FitnessDB";
+
+
+
+
 	public DatabaseHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
