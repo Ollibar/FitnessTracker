@@ -11,6 +11,8 @@ public final class DatabaseContract {
 
       private DatabaseContract(){}
 
+
+
      //durch Basecolumns müssen wir keine IDs mehr vergeben
 
       //Usertabelle
@@ -90,7 +92,7 @@ public final class DatabaseContract {
          public static final String GEWICHT = " Gewicht ";
 
 
-         private static final String SQL_CREATE =
+         public static final String SQL_CREATE =
                  "CREATE TABLE" + TBL_NAME + "(" +
                         Geraet._ID + " integer primary key autoincrement desc, "+
                         NAME + " text not null, "+
@@ -120,5 +122,23 @@ public final class DatabaseContract {
                   NR + " integer not null, "+
                   GEWICHT  + " double not null);";
 
+          public static final String DELETE_TABLE = "DROP TABLE IF EXISTS " + TBL_NAME;
       }
+
+
+    public static final String[] SQL_CREATE_TABLE_ARRAY = {
+            User.SQL_CREATE,
+            Training.SQL_CREATE,
+            Geraet.SQL_CREATE,
+            Trainingsziel.SQL_CREATE,
+            Satz.SQL_CREATE
+    };
+
+     public  static final String[] SQL_DELETE_TABLE_ARRAY ={
+             User.DELETE_TABLE,
+             Training.DELETE_TABLE,
+             Geraet.DELETE_TABLE,
+             Trainingsziel.DELETE_TABLE,
+             Satz.DELETE_TABLE
+     };
 }
