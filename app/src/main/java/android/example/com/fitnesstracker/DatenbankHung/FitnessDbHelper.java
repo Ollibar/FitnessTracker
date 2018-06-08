@@ -25,11 +25,19 @@ public class FitnessDbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
+        String [] SQL_CREATE_QUERIES = DatabaseContract.SQL_CREATE_TABLE_ARRAY;
         try{
-            db.execSQL(String.valueOf(DatabaseContract.SQL_CREATE_TABLE_ARRAY));
+            for(int i = 0;i<SQL_CREATE_QUERIES.length;i++) {
+                Log.d(LOG, "Die Tabellen mit den Anweisungen " + SQL_CREATE_QUERIES[i]
+                        + " werden erzeugt.");
+                db.execSQL(SQL_CREATE_QUERIES[i]);
+            }
         }catch(Exception e){
-            Log.d(LOG,"Fehler beim Anlegen der Tabllen: "+e.getStackTrace()+
-                    "/n"+e.getMessage());
+            for (int i =0;i<SQL_CREATE_QUERIES.length;i++) {
+                Log.d(LOG, "Fehler beim Anlegen der Tabellen: "+SQL_CREATE_QUERIES[i]
+                        + e.getStackTrace() +
+                        "  " + e.getMessage());
+            }
         }
 
     }

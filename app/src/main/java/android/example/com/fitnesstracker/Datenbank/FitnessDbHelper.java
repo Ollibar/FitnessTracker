@@ -90,7 +90,7 @@ class FitnessDbHelper extends SQLiteOpenHelper{
 
     public FitnessDbHelper(Context context) {
         super(context, DB_NAME, null, DB_Version);
-        Log.d(LOG,"DbHelper hat die Datenbank: "+getDatabaseName()+" erzeugt.")
+        Log.d(LOG,"DbHelper hat die Datenbank: "+getDatabaseName()+" erzeugt.");
     }
 
     @Override
