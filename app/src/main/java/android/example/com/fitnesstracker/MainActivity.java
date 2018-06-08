@@ -23,10 +23,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        User testuser = new User(1,"Kenzo94",23,70);
-        Log.d(LOG,"Inhalt vom Test user: "+testuser.toString());
+        User testuser = new User("kenzo94",23,70);
+        Log.d(LOG,"Inhalt vom Test user: "+ testuser.toString());
 
         userDataSource = new UserDataSource(this);
+
+        Log.d(LOG, "Die Datenquelle wird geöffnet.");
+        userDataSource.open();
+
+        // db.execSQL(ENABLE_FOREIGN_KEYS);
+
+        Log.d(LOG, "Die Datenquelle wird geschlossen.");
+        userDataSource.close();
+
 
     }
 
