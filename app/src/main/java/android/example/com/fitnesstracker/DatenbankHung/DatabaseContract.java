@@ -17,10 +17,10 @@ public final class DatabaseContract {
 
       //Usertabelle
       public static abstract class User implements BaseColumns{
-         public static final String TBL_NAME = " User Tabelle";
-         public static final String BENUTZERNAME = " User Benutzername ";
-         public static final String GEWICHT = " User Gewicht";
-         public static final String ALTER = " Alter ";
+         public static final String TBL_NAME = "User_Tabelle";
+         public static final String BENUTZERNAME = "User_Benutzername ";
+         public static final String GEWICHT = "User_Gewicht";
+         public static final String ALTER = "User_Alter ";
 
          public static final String SQL_CREATE =
                  "CREATE TABLE "+ TBL_NAME + "(" +
@@ -45,8 +45,8 @@ public final class DatabaseContract {
         public static final String SQL_CREATE =
                 " CREATE TABLE " + TBL_NAME + "(" +
                         Training._ID + " integer primary key autoincrement desc, "+
-                        Training.BENUTZERNAME + " text, FOREIGN KEY( " +Training.BENUTZERNAME +
-                         " ) REFERENCES "+User.TBL_NAME+ " ( " + User.BENUTZERNAME+" )" +
+                        Training.BENUTZERNAME + " text, FOREIGN KEY( "+Training.BENUTZERNAME +
+                         ")REFERENCES "+User.TBL_NAME+ " ( " + User.BENUTZERNAME+" )" +
                           " ON DELETE CASCADE ON UPDATE CASCADE, "+
                         BESCHREIBUNG +" text, "+
                         GERAETE_ID + " integer, FOREIGN KEY( "+GERAETE_ID+" ) REFERENCES "+

@@ -1,15 +1,20 @@
 package android.example.com.fitnesstracker;
 
-import android.example.com.fitnesstracker.Datenbank.FitnessDbApi;
+import android.database.sqlite.SQLiteDatabase;
+import android.example.com.fitnesstracker.DatenbankBen.DBAdapter;
+import android.example.com.fitnesstracker.DatenbankHung.FitnessDbHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private FitnessDbApi fitnessDbApi = new FitnessDbApi(this);
-
+   // private FitnessDbApi fitnessDbApi = new FitnessDbApi(this);
+   // FitnessDbHelper fitDB = new FitnessDbHelper(this);
+   private DBAdapter dbAdapter = new DBAdapter(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,5 +33,14 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(menu);
+    }
+
+    public void testUser(View view) {
+        boolean isInserted= dbAdapter.insertUser("test1",75,23);
+        if(isInserted = true)
+            Toast.makeText(MainActivity.this,"Daten gespeichert",Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(MainActivity.this,"Daten nicht gespeichert",Toast.LENGTH_LONG).show();
+
     }
 }

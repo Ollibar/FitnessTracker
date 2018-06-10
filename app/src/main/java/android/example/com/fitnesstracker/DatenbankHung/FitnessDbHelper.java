@@ -1,5 +1,6 @@
 package android.example.com.fitnesstracker.DatenbankHung;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -40,5 +41,18 @@ public class FitnessDbHelper extends SQLiteOpenHelper {
        db.execSQL(String.valueOf(DatabaseContract.SQL_DELETE_TABLE_ARRAY));
        onCreate(db);
 
+    }
+    public boolean insertUser(String benutzername, int gewicht, int alter){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("User_Benutzername",benutzername);
+        contentValues.put("User_Gewicht",gewicht);
+        contentValues.put("User_Alter",alter);
+        long result = db.insert("User_Tabelle",null,contentValues);
+        if(result == -1)
+            return false;
+        else
+            return true;
     }
 }
