@@ -1,6 +1,7 @@
 package android.example.com.fitnesstracker;
 
-import android.example.com.fitnesstracker.Datenbank.FitnessDbApi;
+
+
 import android.example.com.fitnesstracker.DatenbankHung.UserData;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,9 +9,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+
 public class MainActivity extends AppCompatActivity {
 
-    private FitnessDbApi fitnessDbApi = new FitnessDbApi(this);
 
     private static final String LOG = MainActivity.class.getSimpleName();
     private UserData userData;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d(LOG, "Die Datenquelle wird geöffnet.");
         userData.open();
+
 
         Log.d(LOG, "Die Datenquelle wird geschlossen.");
         userData.close();
