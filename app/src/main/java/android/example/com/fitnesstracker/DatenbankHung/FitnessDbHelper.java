@@ -17,6 +17,7 @@ public class FitnessDbHelper extends SQLiteOpenHelper {
 
 
 
+
     public FitnessDbHelper(Context context) {
         super(context, DB_NAME , null, DB_VERSION);
         Log.d(LOG,"FitnessDBHelper hat die Datenbank: "+ getDatabaseName()+" erzeugt.");
@@ -45,8 +46,12 @@ public class FitnessDbHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-       db.execSQL(String.valueOf(DatabaseContract.SQL_DELETE_TABLE_ARRAY));
-       onCreate(db);
 
+        String [] SQL_DELETE_QUERIES = DatabaseContract.SQL_DELETE_TABLE_ARRAY;
+
+        for (int i = 0;i < SQL_DELETE_QUERIES.length;i++ ) {
+            db.execSQL(SQL_DELETE_QUERIES[i]);
+        }
+        onCreate(db);
     }
 }

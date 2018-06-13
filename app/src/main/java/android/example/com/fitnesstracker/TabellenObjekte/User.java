@@ -1,9 +1,9 @@
-package android.example.com.fitnesstracker.DatenbankHung;
+package android.example.com.fitnesstracker.TabellenObjekte;
 
 public class User {
 
 
-    private String Benutzername;
+    private String benutzername;
     private int alter;
     private double gewicht;
 
@@ -12,16 +12,16 @@ public class User {
     public User(String benutzername,int alter, double gewicht){
         this.alter=alter;
         this.gewicht=gewicht;
-        this.Benutzername=benutzername;
+        this.benutzername=benutzername;
     }
 
 
     public String getName() {
-        return Benutzername;
+        return benutzername;
     }
 
     public void setName(String name) {
-        this.Benutzername=name;
+        this.benutzername=name;
     }
 
     public int getAlter() {
@@ -41,6 +41,10 @@ public class User {
     }
 
 
-
-
+    @Override
+    public String toString() {
+        String s = "-> Benutzername: "+ benutzername+" Gewicht: "+gewicht+" Alter: "+
+                alter;
+        return s;
+    }
 }

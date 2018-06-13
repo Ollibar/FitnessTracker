@@ -1,40 +1,33 @@
 package android.example.com.fitnesstracker;
 
 import android.example.com.fitnesstracker.Datenbank.FitnessDbApi;
-import android.example.com.fitnesstracker.DatenbankHung.User;
-import android.example.com.fitnesstracker.DatenbankHung.UserDataSource;
+import android.example.com.fitnesstracker.DatenbankHung.UserData;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
-
 public class MainActivity extends AppCompatActivity {
 
     private FitnessDbApi fitnessDbApi = new FitnessDbApi(this);
 
     private static final String LOG = MainActivity.class.getSimpleName();
-    private UserDataSource userDataSource;
+    private UserData userData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        User testuser = new User("kenzo94",23,70);
-        Log.d(LOG,"Inhalt vom Test user: "+ testuser.toString());
 
-        userDataSource = new UserDataSource(this);
+        userData = new UserData(this);
 
         Log.d(LOG, "Die Datenquelle wird geöffnet.");
-        userDataSource.open();
-
-        // db.execSQL(ENABLE_FOREIGN_KEYS);
+        userData.open();
 
         Log.d(LOG, "Die Datenquelle wird geschlossen.");
-        userDataSource.close();
+        userData.close();
 
 
     }

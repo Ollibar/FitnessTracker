@@ -4,21 +4,22 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-public class UserDataSource {
+public class UserData {
 
-    private static final String LOG = UserDataSource.class.getSimpleName();
+    private static final String LOG = UserData.class.getSimpleName();
 
     private SQLiteDatabase database;
     private FitnessDbHelper dbHelper;
 
 
-    public UserDataSource(Context context){
+    public UserData(Context context){
         Log.d(LOG,"Unsere DataSource erzeugt jetzt den dbHelper. ");
         dbHelper = new FitnessDbHelper(context);
     }
     public void open() {
         Log.d(LOG, "Eine Referenz auf die Datenbank wird jetzt angefragt.");
         database = dbHelper.getWritableDatabase();
+        database.execSQL(DatabaseContract.ENABLE_FOREIGN_KEYS);
         Log.d(LOG, "Datenbank-Referenz erhalten. Pfad zur Datenbank: " + database.getPath());
     }
 
