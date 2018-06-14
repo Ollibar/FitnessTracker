@@ -25,7 +25,7 @@ public final class DatabaseContract {
         public static final String SQL_CREATE =
                 "CREATE TABLE " + TBL_NAME + "(" +
                         Benutzer._ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
-                        BENUTZERNAME + " TEXT, " +
+                        BENUTZERNAME + " TEXT NOT NULL UNIQUE, " +
                         GEWICHT + " INTEGER, " +
                         ALTER + " INTEGER);";
 
