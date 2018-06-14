@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login">
+    android:background="@drawable/login"
+    android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
 
     <EditText
         android:padding="10dp"
@@ -58,7 +59,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/rechteck3"
         android:ems="10"
-        android:hint="@string/benutzerGewichtTextHint"
+        android:hint="@string/benutzerAlterTextHint"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
