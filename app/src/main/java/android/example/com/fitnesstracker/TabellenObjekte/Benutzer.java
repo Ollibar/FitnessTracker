@@ -1,28 +1,39 @@
 package android.example.com.fitnesstracker.TabellenObjekte;
 
-public class User {
+public class Benutzer {
 
 
     private String benutzername;
-    private int alter;
+    private int alter,id;
     private double gewicht;
 
 
 
-    public User(String benutzername,int alter, double gewicht){
+
+    public Benutzer(int id, String benutzername, int alter, double gewicht){
         this.alter=alter;
         this.gewicht=gewicht;
         this.benutzername=benutzername;
+        this.id=id;
+
     }
 
-
-    public String getName() {
+    public String getBenutzername() {
         return benutzername;
     }
 
-    public void setName(String name) {
-        this.benutzername=name;
+    public void setBenutzername(String benutzername) {
+        this.benutzername = benutzername;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 
     public int getAlter() {
         return alter;

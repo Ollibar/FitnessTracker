@@ -18,7 +18,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final int databaseVersion = 1;
 
 
-    //columns of the table User
+    //columns of the table Benutzer
     static final String table_user_name = "user";
     static final String COL_user_1 = "user_ID";
     static final String COL_user_2= "user_name";

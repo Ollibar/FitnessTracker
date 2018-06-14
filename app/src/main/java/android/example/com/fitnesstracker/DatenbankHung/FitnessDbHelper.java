@@ -49,23 +49,20 @@ public class FitnessDbHelper extends SQLiteOpenHelper {
 
 
         String [] SQL_DELETE_QUERIES = DatabaseContract.SQL_DELETE_TABLE_ARRAY;
-
-        for (int i = 0;i < SQL_DELETE_QUERIES.length;i++ ) {
-            db.execSQL(SQL_DELETE_QUERIES[i]);
+        try{
+            for(int i = 0;i<SQL_DELETE_QUERIES.length;i++) {
+                Log.d(LOG, "Die Tabellen mit den Anweisungen " + SQL_DELETE_QUERIES[i] + " werden gelöscht.");
+                db.execSQL(SQL_DELETE_QUERIES[i]);
+            }
+            onCreate(db);
+        }catch(Exception e) {
+            for (int i = 0; i < SQL_DELETE_QUERIES.length; i++) {
+                Log.d(LOG, "Fehler beim Löschen der Tabellen: " +SQL_DELETE_QUERIES[i]+
+                        e.getStackTrace() +
+                        "  " + e.getMessage());
+            }
         }
-        onCreate(db);
-    }
-    public boolean insertUser(String benutzername, int gewicht, int alter){
-        SQLiteDatabase db = this.getWritableDatabase();
 
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("User_Benutzername",benutzername);
-        contentValues.put("User_Gewicht",gewicht);
-        contentValues.put("User_Alter",alter);
-        long result = db.insert("User_Tabelle",null,contentValues);
-        if(result == -1)
-            return false;
-        else
-            return true;
     }
+
 }

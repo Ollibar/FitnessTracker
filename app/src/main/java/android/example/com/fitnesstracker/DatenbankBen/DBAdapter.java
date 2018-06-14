@@ -21,7 +21,7 @@ public class DBAdapter {
 
     /*--------------------------------Insert data into table ---------------------------------------------------------*/
 
-    //insert Data into table User
+    //insert Data into table Benutzer
 
     public boolean insertUser(String name, Integer gewicht, Integer alter){
 

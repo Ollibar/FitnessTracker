@@ -2,7 +2,8 @@ package android.example.com.fitnesstracker;
 
 
 
-import android.example.com.fitnesstracker.DatenbankHung.UserData;
+import android.example.com.fitnesstracker.DatenbankHung.BenutzerData;
+import android.example.com.fitnesstracker.TabellenObjekte.Benutzer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private static final String LOG = MainActivity.class.getSimpleName();
-    private UserData userData;
+    private BenutzerData benutzerData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,14 +23,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        userData = new UserData(this);
+        benutzerData = new BenutzerData(this);
 
         Log.d(LOG, "Die Datenquelle wird geöffnet.");
-        userData.open();
+        benutzerData.open();
+
+        //hier müssen wir die datenübergeben bzw. eine neue activity erschaffen für den
+        //benutzer
+        Benutzer benutzer= benutzerData.createBenutzer("king",60
+                ,20);
+        Log.d(LOG,"folgender Eintrag in der Datenbank");
+        Log.d(LOG,"Inhalt: "+benutzer.toString());
 
 
         Log.d(LOG, "Die Datenquelle wird geschlossen.");
-        userData.close();
+        benutzerData.close();
 
 
     }
