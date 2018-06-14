@@ -10,21 +10,22 @@ public final class DatabaseContract {
     private DatabaseContract(){}
 
 
-    // bei jede verbindung muss es aktiviert werden
-    public static final String ENABLE_FOREIGN_KEYS ="PRAGMA foreign_keys=ON"; //db.execSQL(ENABLE_FOREIGN_KEYS);
+    public static final String ENABLE_FOREIGN_KEYS ="PRAGMA foreign_keys=ON";//db.execSQL(ENABLE_FOREIGN_KEYS);
 
     //User_Tabelle
     public static abstract class Benutzer implements BaseColumns {
         public static final String TBL_NAME = "Benutzer";
         public static final String BENUTZERNAME = "Benutzername";
-        public static final String GEWICHT = "Gewicht_in_KG";
+        public static final String GEWICHT = "Gewicht";
         public static final String ALTER = "_Alter";
 
-        public static final String [] COLUMNS_ARRAY = {TBL_NAME,BENUTZERNAME,GEWICHT,ALTER};
+        public static final String [] COLUMNS_ARRAY = {Benutzer._ID,
+                BENUTZERNAME,GEWICHT,ALTER};
 
         public static final String SQL_CREATE =
                 "CREATE TABLE " + TBL_NAME + "(" +
-                        BENUTZERNAME + " TEXT PRIMARY KEY, " +
+                        Benutzer._ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
+                        BENUTZERNAME + " TEXT, " +
                         GEWICHT + " INTEGER, " +
                         ALTER + " INTEGER);";
 
@@ -39,11 +40,11 @@ public final class DatabaseContract {
         public static final String STATION_ID = "Station_ID"; //FK
         public static final String BESCHREIBUNG = "Beschreibung";
         public static final String DATUM = "Datum";
-        public static final String GESCHW = "Geschwindigkeit_in_Kmh";
+        public static final String GESCHW = "Geschwindigkeit_in_Km_h";
         public static final String DAUER = "Dauer_in_Min";
 
         public static final String[] COLUMNS_ARRAY={Training._ID,Training.BENUTZERNAME,BESCHREIBUNG,
-        STATION_ID,GESCHW,DAUER,DATUM};
+                STATION_ID,GESCHW,DAUER,DATUM};
 
 
         public static final String SQL_CREATE =
@@ -77,8 +78,8 @@ public final class DatabaseContract {
         public static final String POSITION_EINSTELLUNG_DREI= "Position_Einstellung_3";
 
         public static final String[] COLUMNS_ARRAY={Trainingsziel._ID,Trainingsziel.BENUTZERNAME
-        ,Trainingsziel.STATION_ID,SOLL_GEWICHT,SOLL_DAUER,SOLL_GESCHW,POSITION_EINSTELLUNG_EINS,
-        POSITION_EINSTELLUNG_ZWEI,POSITION_EINSTELLUNG_DREI};
+                ,Trainingsziel.STATION_ID,SOLL_GEWICHT,SOLL_DAUER,SOLL_GESCHW,POSITION_EINSTELLUNG_EINS,
+                POSITION_EINSTELLUNG_ZWEI,POSITION_EINSTELLUNG_DREI};
 
 
         public static final String SQL_CREATE =

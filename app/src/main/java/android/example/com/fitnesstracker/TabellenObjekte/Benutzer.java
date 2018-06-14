@@ -54,7 +54,7 @@ public class Benutzer {
 
     @Override
     public String toString() {
-        String s = "-> Benutzername: "+ benutzername+" Gewicht: "+gewicht+" Alter: "+
+        String s = "->ID: "+id+" Benutzername: "+ benutzername+" Gewicht: "+gewicht+" Alter: "+
                 alter;
         return s;
     }
