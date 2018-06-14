@@ -10,4 +10,11 @@
     <string name="menu_item">später</string>
     <string name="trainings_ziel">Trainingsziele erstellen</string>
 
+
+    //Benutzer
+    <string name="benutzerNameTextHint">Benutzername:</string>
+    <string name="benutzerGewichtTextHint">Gewicht:</string>
+    <string name="benutzerAlterTextHint">Alter:</string>
+    <string name="buttonBenutzer">Pumpen</string>
+
 </resources>
